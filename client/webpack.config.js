@@ -51,14 +51,14 @@ module.exports = () => {
       rules: [
          {
            test: /\.css$/i,
-           use: ['style-loader', 'css-loader'],
+           use: ['style-loader', 'css-loader'], //
          },{
-           test: /\.m?js$/,
-           exclude: /(node_modules|bower_components)/,
+           test: /\.m?js$/, //js files
+           exclude: /(node_modules|bower_components)/, //exclude node_modules and bower_components
            use: {
-             loader: 'babel-loader',
+             loader: 'babel-loader', //babel-loader
              options: {
-               presets: ['@babel/preset-env'],
+               presets: ['@babel/preset-env'], //
                plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
              },
            },
