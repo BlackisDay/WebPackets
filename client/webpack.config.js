@@ -21,14 +21,13 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        inject: true,
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
-        fingerprints: true,
+        fingerprints: false,
         inject: true,
         filename: 'manifest.json',
         name: 'JATE',
@@ -40,9 +39,9 @@ module.exports = () => {
         display: 'standalone',
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
+            src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
-           purpose:'maskable'
+           destination: path.join('assets', 'icons'),
           }
          ],
         start_url: '/',
