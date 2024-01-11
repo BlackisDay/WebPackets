@@ -13,15 +13,15 @@ const initdb = async () =>  // creates the database if it doesn't exist
     },
   });
 
-export const putDb = async (content) =>{
+export const putDb = async (id,content) =>{
+  console.log('PUT to the database');
   const jateDb = await openDB('jate', 1); // open the database
   const tx = jateDb.transaction('jate', 'readwrite'); // start a transaction
   const store = tx.objectStore('jate'); // get the 'jate' object store
-  const request = store.put({ jate: content }); // put the content in the 'jate' object store
+  const request = store.put({id: id,jate: content }); // put the content in the 'jate' object store
   const result = await request;
   console.log('data saved to the database', result); // get the result
 };
-console.error('putDb not implemented'); // putDB is from database.js, it adds content to the database.
 
 export const getDb = async () =>{
   const jateDb = await openDB('jate', 1); // open the database
